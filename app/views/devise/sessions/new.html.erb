@@ -1,0 +1,18 @@
+<div class="module form-module">
+  <div class="toggle"></div>
+  <div class="form">
+    <h2>Login</h2>
+    <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.submit "Sign in" , style: "background-color: #33b5e5; color: #fff;"%>
+      <% end %>
+    </form>
+  </div>
+
+</div>
+
+

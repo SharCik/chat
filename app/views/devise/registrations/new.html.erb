@@ -1,0 +1,27 @@
+<div class="module form-module">
+  <div class="toggle"></div>
+  <div class="form">
+    <h2>Sign up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.label :picture %><br>
+        <%= f.file_field :picture %>
+        <%= f.submit "Sign up" , style: "background-color: #33b5e5; color: #fff;"%>
+      <% end %>
+    </form>
+  </div>
+
+</div>
+
+

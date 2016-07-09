@@ -1,0 +1,78 @@
+<div class="row">
+  <!-- Not implemented on tutorial -->
+  <div class="col-md-4">
+      <% flash.each do |name, msg| -%>
+
+        <%= content_tag :div, msg, class: name , style:"color: red;" if name == "ban"%>
+      <% end -%>
+    <div style="max-height: 250px; overflow-y: auto;">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Registered Users</div>
+
+        <!-- Table -->
+        <table class="table">
+          <tbody>
+          <% @users.each_with_index do |user| %>
+              <tr>
+                <% if user.picture.thumb.url == nil %>
+                <td><%= image_tag("noimage.png", size:"30x30") %></td>
+                <% else %>
+                <td><%= image_tag(user.picture.thumb.url, size:"30x30") %></td>
+                <% end %>
+                <td style="line-height: 30px;"><span style="vertical-align: center;"><%= user.name %></span></td>
+                <td style="line-height: 30px;"><span style="vertical-align: center;"><%= user_online?(@users,user) %></span></td>
+                <td style="line-height: 30px;">
+                  <%= link_to "Send Message", "#", class: "btn btn-link start-conversation", style:"color: #33b5e5;",
+                              "data-sid" => current_user.id, "data-rip" => user.id %>
+                </td>
+                <% if current_user.admin? %>
+                  <td style="line-height: 30px;">
+                    <% if user.ban == true %>
+                      <%= link_to image_tag("ban.png", size:"25x25"), remove_ban_path(user_id: user.id) %>
+                    <% else %>
+                      <%= link_to image_tag("ban.png", size:"25x25"), ban_path(user_id: user.id), class:"ban" %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <hr>
+    <h3>Your Conversations</h3>
+
+    <div style="height: 400px; overflow-y: auto;">
+      <% if @conversations.any? %>
+          <ul class="media-list">
+              <% @conversations.each do |conversation| %>
+                <li class="media">
+                <% user = User.where(id: conversation.sender_id) %>
+                  <% if user.first.picture.thumb.url == nil %>
+                    <td><%= image_tag("noimage.png", class: "media-object pull-left", size:"50x50") %></td>
+                  <% else %>
+                    <td><%= image_tag(user.first.picture.thumb.url, class: "media-object pull-left", size:"50x50") %></td>
+                  <% end %>
+                  <div class="media-body">
+                         <h4 class="media-heading"><%= link_to conversation_interlocutor(conversation).name, conversation_path(conversation), class: "conversation", "data-cid" => conversation.id  %></h4>
+                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+                  </div>
+                </li>
+            <% end %>
+          </ul>
+      <% else %>
+          <p>You have no conversations. Click send message with any user to create one.</p>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+
+  </div>
+
+</div>

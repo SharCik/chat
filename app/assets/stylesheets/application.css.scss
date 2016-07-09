@@ -1,0 +1,418 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+// Main Colors
+$accent: null;
+$white: #ffffff;
+$black: #000000;
+$dark-gray: lighten($black, 20%);
+$gray: lighten($black, 40%);
+$light-gray: lighten($black, 60%);
+$lighter-gray: lighten($black, 80%);
+
+// Pen Settings
+$accent: #33b5e5;
+$module-width: 320px;
+
+
+
+/******* ChatBox! *******/
+
+.chatbox {
+    position: fixed;
+    position: expression("absolute");
+
+    width: 50%;
+    height: 85%;
+
+    right: 1px;
+    display: none;
+    margin-bottom: 40px;
+}
+
+.chatboxhead {
+    background: #666;
+    color: white;
+    padding: 0.5rem;
+    overflow: hidden;
+
+    border-right: 1px solid rgba(85, 85, 85, 0.87);
+    border-left: 1px solid rgba(85, 85, 85, 0.87);
+}
+
+
+.chatboxhead h1 {
+    display: inline;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.chatboxblink {
+    background-color: #176689;
+    border-right: 1px solid #176689;
+    border-left: 1px solid #176689;
+}
+
+.chatboxcontent {
+    font-family: arial, sans-serif;
+    height: 90%;
+    width: 100%;
+    overflow-y: auto;
+    padding: 7px;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #eeeeee;
+    background: #e5e5e5;
+    line-height: 1.3em;
+    list-style: none;
+}
+
+.chatboxcontent li {
+    padding: 0.5rem;
+    overflow: hidden;
+    display: flex;
+}
+
+.chatboxcontent .avatar {
+    width: 40px;
+    position: relative;
+}
+
+.chatboxcontent .avatar img {
+    display: block;
+    width: 100%;
+}
+
+.other .avatar:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.self {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.self .chatboxmessagecontent {
+    order: 1;
+    border-bottom-right-radius: 0;
+}
+
+.self .avatar {
+    order: 2;
+}
+
+.self .avatar:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.chatboxmessagecontent {
+    background: white;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.chatboxmessagecontent p {
+
+    font-size: 12px;
+    margin: 0 0 0.2rem 0;
+    -ms-word-break: break-all;
+
+    /* Non standard for webkit */
+    word-break: break-word;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    width: 100% !important;
+}
+
+.chatboxmessagecontent time {
+    font-size: 9px;
+    color: rgb(51, 181, 229);
+}
+
+.chatboxinput {
+    padding: 5px;
+    background-color: #ffffff;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+.chatboxtextarea {
+    width: 100%;
+    height: 44px;
+    padding: 3px 0pt 3px 3px;
+    border: 1px solid #eeeeee;
+    margin: 1px;
+    overflow: hidden;
+    resize: none !important;
+}
+
+.chatboxtextareaselected {
+    border: 2px solid #878787;
+    margin: 0;
+}
+
+.chatboxmessage {
+    margin-left: 1em;
+}
+
+.chatboxinfo {
+    margin-left: -1em;
+    color: #666666;
+
+}
+
+.chatboxoptions {
+    float: right;
+}
+
+.chatboxoptions a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.chatboxtitle {
+    float: left;
+}
+
+/******* End of ChatBox *******/
+
+
+
+
+
+
+
+/******* Login *******/
+
+body {
+  background: #e9e9e9;
+  color: $gray;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pen Title */
+.pen-title {
+  padding: 50px 0;
+  text-align: center;
+  letter-spacing: 2px;
+  h1 {
+    margin: 0 0 20px;
+    font-size: 48px;
+    font-weight: 300;
+  }
+  span {
+    font-size: 12px;
+    .fa {
+      color: $accent;
+    }
+    a {
+      color: $accent;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Form Module */
+.form-module {
+  position: relative;
+  background: $white;
+  max-width: $module-width;
+  width: 100%;
+  border-top: 5px solid $accent;
+  box-shadow: 0 0 3px rgba($black, .1);
+  margin: 0 auto;
+  .toggle {
+    cursor: pointer;
+    position: absolute;
+    top: -0;
+    right: -0;
+    background: $accent;
+    width: 30px;
+    height: 30px;
+    margin: -5px 0 0;
+    color: $white;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    .tooltip {
+      position: absolute;
+      top: 5px;
+      right: -65px;
+      display: block;
+      background: rgba($black, .6%);
+      width: auto;
+      padding: 5px;
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: -5px;
+        display: block;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid rgba($black, .6);
+      }
+    }
+  }
+  .form {
+    display: none;
+    padding: 40px;
+    &:nth-child(2) {
+      display: block;
+    }
+  }
+  h2 {
+    margin: 0 0 20px;
+    color: $accent;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  input {
+    outline: none;
+    display: block;
+    width: 100%;
+    border: 1px solid darken($white, 15%);
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-wieght: 400;
+    &:focus {
+      border: 1px solid $accent;
+      color: $dark-gray;
+    }
+  }
+  button {
+    cursor: pointer;
+    background: $accent;
+    width: 100%;
+    border: 0;
+    padding: 10px 15px;
+    color: $white;
+    &:hover {
+      background: darken($accent, 15%);
+    }
+  }
+  .cta {
+    background: darken($white, 5%);
+    width: 100%;
+    padding: 15px 40px;
+    box-sizing: border-box;    
+    color: $gray;
+    font-size: 12px;
+    text-align: center;
+    a {
+      color: $dark-gray;
+      text-decoration: none;
+    }
+  }
+}
+
+/** Errors view **/
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.btn.sharp {
+  border-radius:0;
+  background-color: #33b5e5;
+  color: white;
+  width: 100%;
+  height: 50px;
+}
+
+
+.thumbnail {
+    padding:0px;
+}
+.panel {
+  position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+  position:absolute;
+  top:11px;left:-16px;
+  right:100%;
+  width:0;
+  height:0;
+  display:block;
+  content:" ";
+  border-color:transparent;
+  border-style:solid solid outset;
+  pointer-events:none;
+}
+.panel>.panel-heading:after{
+  border-width:7px;
+  border-right-color:#f7f7f7;
+  margin-top:1px;
+  margin-left:2px;
+}
+.panel>.panel-heading:before{
+  border-right-color:#ddd;
+  border-width:8px;
+}
+
+
+
+
+/****** Others ******/
+
+.ban{
+  opacity: 0.4;
+}
+
+.ban:hover{
+  opacity: 1;
+}

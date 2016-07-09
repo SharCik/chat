@@ -1,0 +1,20 @@
+ <li class="<%=  self_or_other(message) %>">
+  <div class="avatar">
+  	<% user = User.where(id: message.user_id) %>
+      <% if user.first.picture.thumb.url == nil %>
+        <td><%= image_tag("noimage.png") %></td>
+      <% else %>
+        <td><%= image_tag(user.first.picture.thumb.url) %></td>
+      <% end %>
+        
+  </div>
+  <div class="chatboxmessagecontent" style="width: 100%;">
+    <p  style="width: 100%;"><%= message.body %></p>
+    <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
+      <%= message_interlocutor(message).name %> • <%= message.created_at.strftime("%H:%M %p") %>
+    </time>
+    <% if current_user.admin? %>
+      <span><%= link_to image_tag("delete.png", size:"20x20"), delete_path(message_id: message.id) %></span>
+    <% end %>
+  </div>
+</li>

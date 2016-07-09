@@ -1,0 +1,16 @@
+<div class="module form-module">
+  <div class="toggle"></div>
+  <div class="form">
+    <h2 style="text-align: center;margin-bottom: 5px;">Profile</h2>
+      <p style="text-align: center;"><% if current_user.picture.thumb.url == nil %>
+        <%= image_tag("noimage.png", size:"80x80") %>
+      <% else %>
+        <%= image_tag(current_user.picture.thumb.url, size:"80x80") %>
+      <% end %></p>
+      <p>Name: <span><%= current_user.name %></span></p>
+      <p>Email: <span><%= current_user.email %></span></p>
+      <p style="text-align: center;"><%= link_to "Edit" , edit_user_path(current_user.id), style:"color: rgb(51, 181, 229);"%></p>
+      <p style="text-align: center;margin-top: 10px;"><%= link_to "Back", :back, style:"color: rgb(51, 181, 229);" %></p>
+  </div>
+
+</div>
