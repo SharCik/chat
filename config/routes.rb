@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   match '/profile',  to: 'users#show',            via: 'get'
   match '/ban',  to: 'users#setBan',            via: 'get'
   match '/remove_ban',  to: 'users#removeBan',            via: 'get'
-  match '/delete',  to: 'messages#delete',            via: 'get'
+  match '/delete',  to: 'messages#delete',            via: 'DELETE'
 
   authenticated :user do
     root 'users#index'

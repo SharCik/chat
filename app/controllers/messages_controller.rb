@@ -12,11 +12,15 @@ class MessagesController < ApplicationController
   end
 
   def delete
-    message = Message.find(params[:message_id])
-    conversation = Conversation.find(message.conversation_id)
-    message.destroy!
 
-    @path = conversation_path(conversation)
+    @message = Message.find(params[:message_id])
+    @conversation = Conversation.find(@message.conversation_id)
+    @message.destroy!
+
+    respond_to do |format|
+      format.html {redirect_to conversation_path(@conversation)}
+      format.js {}
+    end
   end
 
   private

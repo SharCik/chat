@@ -1,4 +1,4 @@
- <li class="<%=  self_or_other(message) %>">
+ <li id="mes_<%= message.id %>" class="<%=  self_or_other(message) %>">
   <div class="avatar">
   	<% user = User.where(id: message.user_id) %>
       <% if user.first.picture.thumb.url == nil %>
@@ -14,7 +14,7 @@
       <%= User.find(message.user_id).name %>, <%= message.created_at.strftime("%H:%M %p") %>
     </time>
     <% if current_user.admin? %>
-      <span><%= link_to image_tag("delete.png", size:"20x20"), delete_path(message_id: message.id) %></span>
+      <span><%= link_to image_tag("delete.png", size:"20x20"), delete_path(message_id: message.id), remote: true, method: :delete %></span>
     <% end %>
   </div>
 </li>
