@@ -17,10 +17,16 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @reciever = interlocutor(@conversation)
+    if (@conversation.sender_id and @conversation.recipient_id) == 100
+      @room = true
+    else
+      @reciever = interlocutor(@conversation)
+    end
     @messages = @conversation.messages
     @message = Message.new
   end
+
+
 
   private
   def conversation_params

@@ -43,7 +43,9 @@ var ready = function () {
 
 
         createChatBox: function (conversation_id) {
+
             chatBox.close();
+
             if ($("#chatbox_" + conversation_id).length > 0) {
 
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
@@ -52,9 +54,9 @@ var ready = function () {
                 }
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
                 return;
-            }
+            };
 
-            $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>')
+            $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>');
 
             $.get("conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);
