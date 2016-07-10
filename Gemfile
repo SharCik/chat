@@ -34,6 +34,7 @@ gem 'devise'
 gem 'private_pub'
 gem 'thin'
 gem 'foreman'
+gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'devise_lastseenable'
