@@ -2,7 +2,7 @@
   <div class="toggle"></div>
   <div class="form">
     <h2 style="text-align: center;margin-bottom: 5px;">Profile</h2>
-      <p style="text-align: center;"><% if current_user.picture.thumb.url == nil %>
+      <p style="text-align: center;"><% if current_user.picture.profile.url == nil %>
         <%= image_tag("noimage.png", size:"80x80") %>
       <% else %>
         <%= image_tag(current_user.picture.thumb.url, size:"80x80") %>
