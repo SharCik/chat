@@ -2,7 +2,12 @@
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
 
-    <h1><%= @reciever.name if @room != true %> </h1>
+    <h1><% if @room != true %>
+        <%= @reciever.name  %>
+        <% else %>
+        Chat Room
+        <% end %>
+    </h1>
   </div>
   <div class="chatboxoptions">
     &nbsp;&nbsp;
