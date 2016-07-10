@@ -33,6 +33,7 @@ gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'private_pub'
 gem 'thin'
+gem 'foreman'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'devise_lastseenable'
