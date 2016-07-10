@@ -5,6 +5,9 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://example.com/faye"
+  server: "https://chat-zelenko.herokuapp.com/faye" 
+
+#this is the address of this heroku app once you’ve deployed it, plus the `/faye` extension. 
+
   secret_token: "3dc6d3f15c7caea1aa0742c369c37742098586298932958e224a5d936c48c097"
-  signature_expiration: 3600 # one hour
+  signature_expiration: 3600 # one day
